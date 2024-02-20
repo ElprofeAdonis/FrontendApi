@@ -4,12 +4,15 @@ import React, { useState, useEffect } from "react";
 import { get } from "./util/apiClient";
 
 function App() {
-  const [movies, setMovies] = useState(null);
+  const [infoMovies, setMovies] = useState(null);
+
   useEffect(() => {
-    if (movies === null) {
-      get("/peliculas");
+    if (infoMovies === null) {
+      setMovies(get("/peliculas"));
     }
-  }, [movies]);
+  }, [infoMovies]);
+  console.log({ infoMovies });
+
   return (
     <div className="App">
       <div>
