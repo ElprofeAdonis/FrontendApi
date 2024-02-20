@@ -9,6 +9,15 @@ function App() {
           Welcome to my first React app. This is a simple app to get started
           with React.
         </p>
+        <div>
+          <div>
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Introduzca su nombre"
+            ></input>
+          </div>
+        </div>
       </div>
     </div>
   );
