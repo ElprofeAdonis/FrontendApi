@@ -9,7 +9,7 @@ export const get = async (resource) => {
   if (apiResponse.status !== 200) {
     return apiResponse.data;
   } else {
-    console.log(apiResponse);
+    console.log(apiResponse.data);
     return null;
   }
 };
