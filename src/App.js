@@ -26,27 +26,29 @@ const App = () => {
     fetchdata();
   }, []);
   console.log(infoMovies);
+
+  if (isLoading) {
+    return <div>Loading movies...</div>;
+  }
   return (
     <div className="App">
       <div>
         <Header />
       </div>
       <div>
-        <Card sx={{ minWidth: 275 }}>
+        <Card sx={{ minWidth: 175 }}>
           <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography variant="h3" component="div">
               Movies:
             </Typography>
             {infoMovies && (
-              <ul>
+              <Typography>
                 {infoMovies.map((movie) => (
-                  <li key={movie.id}>
-                    {movie.nombre}
-                    {movie.director}
-                    {movie.clasificacion}
-                  </li>
+                  <Typography key={movie.id} variant="body2">
+                    {movie.nombre} - {movie.director} - {movie.clasificacion}
+                  </Typography>
                 ))}
-              </ul>
+              </Typography>
             )}
           </CardContent>
         </Card>
