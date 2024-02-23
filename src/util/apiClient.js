@@ -3,13 +3,11 @@ const URL = "http://localhost:3000";
 
 export const get = async (resource) => {
   const queryYrlMovies = `${URL}${resource}`;
-  const apiResponse = await axios.get(queryYrlMovies);
-
-  console.log(apiResponse);
-  if (apiResponse.status !== 200) {
+  try {
+    const apiResponse = await axios.get(queryYrlMovies);
     return apiResponse.data;
-  } else {
-    console.log(apiResponse.data);
+  } catch (error) {
+    console.error("Error fetching movies ", error);
     return null;
   }
 };

@@ -3,62 +3,51 @@ import Header from "./componentes/Header";
 import React, { useState, useEffect } from "react";
 import { get } from "./util/apiClient";
 
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
 const App = () => {
   const [infoMovies, setMovies] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (infoMovies === null) {
-      setMovies(get("/peliculas"));
-    }
-  }, [infoMovies]);
-  console.log({ infoMovies });
-
+    const fetchdata = async () => {
+      setIsLoading(true);
+      try {
+        const movies = await get("/peliculas");
+        setMovies(movies);
+      } catch (error) {
+        console.error("Error fetching movies", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchdata();
+  }, []);
+  console.log(infoMovies);
   return (
     <div className="App">
       <div>
         <Header />
       </div>
       <div>
-        <h1>My First React App</h1>
-        <p>
-          Welcome to my first React app. This is a simple app to get started
-          with React.
-        </p>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Word of the Day
-            </Typography>
             <Typography variant="h5" component="div">
-              be{bull}nev{bull}o{bull}lent
+              Movies:
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
+            {infoMovies && (
+              <ul>
+                {infoMovies.map((movie) => (
+                  <li key={movie.id}>
+                    {movie.nombre}
+                    {movie.director}
+                    {movie.clasificacion}
+                  </li>
+                ))}
+              </ul>
+            )}
           </CardContent>
         </Card>
       </div>
