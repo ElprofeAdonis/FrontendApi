@@ -40,12 +40,11 @@ const App = () => {
         {infoMovies.map((movie) => (
           <Card
             sx={{
-              background: "red",
               margin: "2px",
               padding: "1px",
               display: "inline-block",
-              width: "20%",
-              height: "250px",
+              width: "16%",
+              height: "220px",
             }}
             key={movie.id}
           >
