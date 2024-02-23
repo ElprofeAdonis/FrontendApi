@@ -37,30 +37,31 @@ const App = () => {
         <Header />
       </div>
       <div>
-        {infoMovies.map((movie) => (
-          <Card
-            sx={{
-              margin: "2px",
-              padding: "1px",
-              display: "inline-block",
-              width: "16%",
-              height: "220px",
-            }}
-            key={movie.id}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontSize: 28 }}
-                color="text.secondary"
-                gutterBottom
-              >
-                {movie.nombre}
-              </Typography>
-              <Typography variant="body2">{movie.director}</Typography>
-              <Typography variant="body2">{movie.clasificacion}</Typography>
-            </CardContent>
-          </Card>
-        ))}
+        {infoMovies &&
+          infoMovies.map((movie) => (
+            <Card
+              sx={{
+                margin: "1px",
+                padding: "1px",
+                display: "inline-block",
+                width: "20%",
+                height: "250px",
+              }}
+              key={movie.id}
+            >
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 28 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  {movie.nombre}
+                </Typography>
+                <Typography variant="body2">{movie.director}</Typography>
+                <Typography variant="body2">{movie.clasificacion}</Typography>
+              </CardContent>
+            </Card>
+          ))}
       </div>
     </div>
   );
