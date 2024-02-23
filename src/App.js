@@ -30,31 +30,35 @@ const App = () => {
   if (isLoading) {
     return <div>Loading movies...</div>;
   }
-  return (
-    <div className="App">
-      <div>
-        <Header />
+  if (infoMovies) {
+    return (
+      <div className="App">
+        <div>
+          <Header />
+        </div>
+        <div>
+          <Card sx={{ minWidth: 175, background: "red" }}>
+            {infoMovies.map((movie) => (
+              <CardContent key={movie.id}>
+                <Typography
+                  sx={{ fontSize: 28 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  Movies:
+                </Typography>
+                <Typography variant="h5" component="div">
+                  {movie.nombre}
+                </Typography>
+                <Typography variant="body2">{movie.director}</Typography>
+                <Typography variant="body2">{movie.clasificacion}</Typography>
+              </CardContent>
+            ))}
+          </Card>
+        </div>
       </div>
-      <div>
-        <Card sx={{ minWidth: 175 }}>
-          <CardContent>
-            <Typography variant="h3" component="div">
-              Movies:
-            </Typography>
-            {infoMovies && (
-              <Typography>
-                {infoMovies.map((movie) => (
-                  <Typography key={movie.id} variant="body2">
-                    {movie.nombre} - {movie.director} - {movie.clasificacion}
-                  </Typography>
-                ))}
-              </Typography>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;
