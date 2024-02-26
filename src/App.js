@@ -36,22 +36,22 @@ const App = () => {
       <div>
         <Header />
       </div>
-      <div>
+      <div style={{ display: "flex", width: "70%", justifyContent: "center" }}>
         {infoMovies &&
           infoMovies.map((movie) => (
             <Card
               sx={{
                 margin: "1px",
                 padding: "1px",
-                display: "inline-block",
-                width: "20%",
-                height: "250px",
+                display: "-ms-inline-flexbox",
+                width: "30%",
+                height: "150px",
               }}
               key={movie.id}
             >
               <CardContent>
                 <Typography
-                  sx={{ fontSize: 28 }}
+                  sx={{ fontSize: 18 }}
                   color="text.secondary"
                   gutterBottom
                 >
@@ -62,6 +62,7 @@ const App = () => {
               </CardContent>
             </Card>
           ))}
+        <div>Hola Soy Adonis</div>
       </div>
     </div>
   );
