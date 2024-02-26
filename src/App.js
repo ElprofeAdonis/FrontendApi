@@ -36,33 +36,37 @@ const App = () => {
       <div>
         <Header />
       </div>
-      <div style={{ display: "flex", width: "70%", justifyContent: "center" }}>
-        {infoMovies &&
-          infoMovies.map((movie) => (
-            <Card
-              sx={{
-                margin: "1px",
-                padding: "1px",
-                display: "-ms-inline-flexbox",
-                width: "30%",
-                height: "150px",
-              }}
-              key={movie.id}
-            >
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 18 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  {movie.nombre}
-                </Typography>
-                <Typography variant="body2">{movie.director}</Typography>
-                <Typography variant="body2">{movie.clasificacion}</Typography>
-              </CardContent>
-            </Card>
-          ))}
-        <div>Hola Soy Adonis</div>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "70%", border: "1px solid red" }}>
+          {infoMovies &&
+            infoMovies.map((movie) => (
+              <Card
+                sx={{
+                  margin: "1px",
+                  padding: "1px",
+                  display: "-ms-inline-flexbox",
+                  width: "30%",
+                  height: "150px",
+                }}
+                key={movie.id}
+              >
+                <CardContent>
+                  <Typography
+                    sx={{ fontSize: 18 }}
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    {movie.nombre}
+                  </Typography>
+                  <Typography variant="body2">{movie.director}</Typography>
+                  <Typography variant="body2">{movie.clasificacion}</Typography>
+                </CardContent>
+              </Card>
+            ))}
+        </div>
+        <div style={{ border: "1px solid red", width: "30%" }}>
+          Hola Soy Adonis
+        </div>
       </div>
     </div>
   );
