@@ -37,7 +37,14 @@ const App = () => {
         <Header />
       </div>
       <div style={{ display: "flex" }}>
-        <div style={{ width: "70%", border: "1px solid red" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "70%",
+            border: "1px solid red",
+            height: "90%",
+          }}
+        >
           {infoMovies &&
             infoMovies.map((movie) => (
               <Card

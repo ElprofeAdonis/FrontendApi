@@ -11,3 +11,14 @@ export const get = async (resource) => {
     return null;
   }
 };
+
+export const post = async (resource, data) => {
+  const queryYrlMovies = `${URL}${resource}`;
+  try {
+    const apiResponse = await axios.post(queryYrlMovies, data);
+    return apiResponse.data;
+  } catch (error) {
+    console.error("Error fetching movies ", error);
+    return null;
+  }
+};
