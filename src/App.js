@@ -91,7 +91,12 @@ const App = () => {
               </Card>
             ))}
         </div>
-        <div style={{ border: "1px solid red", width: "50%" }}>
+        <div
+          style={{
+            width: "50%",
+            background: "#cdcdcd",
+          }}
+        >
           Hola Soy Adonis
           <div>
             <Box
@@ -106,7 +111,7 @@ const App = () => {
                 <TextField
                   id="outlined-multiline-flexible"
                   label="Nombre de la película"
-                  placeholder="Nombre de la película"
+                  placeholder="Película"
                   value={newMovie.nombre}
                   onChange={(event) =>
                     setNewMovie({ ...newMovie, nombre: event.target.value })
@@ -141,7 +146,6 @@ const App = () => {
                 />
               </div>
             </Box>
-
             <Button onClick={handleAddMovie} variant="contained">
               Agregar película
             </Button>
