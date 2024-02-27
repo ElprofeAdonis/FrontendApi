@@ -1,6 +1,10 @@
 import "./App.css";
 import Header from "./componentes/Header";
 import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 import { get } from "./util/apiClient";
 import { post } from "./util/apiClient";
 
@@ -38,6 +42,7 @@ const App = () => {
       .then((response) => {
         const updateMovies = [...infoMovies, response];
         setMovies(updateMovies);
+        setNewMovie({ nombre: "", director: "", clasificacion: "" });
       })
       .catch((error) => {
         console.error("Error fetching movies", error);
@@ -55,8 +60,7 @@ const App = () => {
       <div style={{ display: "flex" }}>
         <div
           style={{
-            display: "flex",
-            width: "70%",
+            width: "50%",
             border: "1px solid red",
             height: "90%",
           }}
@@ -68,7 +72,7 @@ const App = () => {
                   margin: "1px",
                   padding: "1px",
                   display: "-ms-inline-flexbox",
-                  width: "30%",
+                  width: "50%",
                   height: "150px",
                 }}
                 key={movie.id}
@@ -87,34 +91,60 @@ const App = () => {
               </Card>
             ))}
         </div>
-        <div style={{ border: "1px solid red", width: "30%" }}>
+        <div style={{ border: "1px solid red", width: "50%" }}>
           Hola Soy Adonis
           <div>
-            <input
-              type="text"
-              placeholder="Nombre de la película"
-              value={newMovie.nombre}
-              onChange={(event) =>
-                setNewMovie({ ...newMovie, nombre: event.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Director"
-              value={newMovie.director}
-              onChange={(event) =>
-                setNewMovie({ ...newMovie, director: event.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Clasificación"
-              value={newMovie.clasificacion}
-              onChange={(event) =>
-                setNewMovie({ ...newMovie, clasificacion: event.target.value })
-              }
-            />
-            <button onClick={handleAddMovie}>Agregar película</button>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "25ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <div>
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="Nombre de la película"
+                  placeholder="Nombre de la película"
+                  value={newMovie.nombre}
+                  onChange={(event) =>
+                    setNewMovie({ ...newMovie, nombre: event.target.value })
+                  }
+                  multiline
+                  maxRows={4}
+                />
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="Director"
+                  placeholder="Director"
+                  value={newMovie.director}
+                  onChange={(event) =>
+                    setNewMovie({ ...newMovie, director: event.target.value })
+                  }
+                  multiline
+                  maxRows={4}
+                />
+                <TextField
+                  id="outlined-multiline-flexible"
+                  label="Clasificación"
+                  placeholder="Clasificación"
+                  value={newMovie.clasificacion}
+                  onChange={(event) =>
+                    setNewMovie({
+                      ...newMovie,
+                      clasificacion: event.target.value,
+                    })
+                  }
+                  multiline
+                  maxRows={4}
+                />
+              </div>
+            </Box>
+
+            <Button onClick={handleAddMovie} variant="contained">
+              Agregar película
+            </Button>
           </div>
         </div>
       </div>
