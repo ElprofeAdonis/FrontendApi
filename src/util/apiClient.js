@@ -22,3 +22,14 @@ export const post = async (resource, data) => {
     return null;
   }
 };
+
+export const put = async (resource, data) => {
+  const queryYrlMovies = `${URL}${resource}`;
+  try {
+    const apiResponse = await axios.put(queryYrlMovies, data);
+    return apiResponse.data;
+  } catch (error) {
+    console.error("Error fetching movies ", error);
+    return null;
+  }
+};
