@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./componentes/Header";
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import Input from "./componentes/Input";
 import Button from "@mui/material/Button";
 
 import { get } from "./util/apiClient";
@@ -91,15 +91,11 @@ const App = () => {
               </Card>
             ))}
         </div>
-        <div
-          style={{
-            width: "50%",
-            background: "#cdcdcd",
-          }}
-        >
-          Hola Soy Adonis
+        <div>
+          <div className="App-header">Hola Soy Adonis</div>
           <div>
             <Box
+              className="Centrar-box"
               component="form"
               sx={{
                 "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -108,7 +104,7 @@ const App = () => {
               autoComplete="off"
             >
               <div>
-                <TextField
+                <Input
                   id="outlined-multiline-flexible"
                   label="Nombre de la película"
                   placeholder="Película"
@@ -119,7 +115,7 @@ const App = () => {
                   multiline
                   maxRows={4}
                 />
-                <TextField
+                <Input
                   id="outlined-multiline-flexible"
                   label="Director"
                   placeholder="Director"
@@ -130,7 +126,7 @@ const App = () => {
                   multiline
                   maxRows={4}
                 />
-                <TextField
+                <Input
                   id="outlined-multiline-flexible"
                   label="Clasificación"
                   placeholder="Clasificación"
@@ -146,9 +142,11 @@ const App = () => {
                 />
               </div>
             </Box>
-            <Button onClick={handleAddMovie} variant="contained">
-              Agregar película
-            </Button>
+            <div className="Centrar-box">
+              <Button onClick={handleAddMovie} variant="contained">
+                Agregar película
+              </Button>
+            </div>
           </div>
         </div>
       </div>
