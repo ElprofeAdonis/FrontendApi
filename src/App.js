@@ -3,7 +3,8 @@ import Header from "./componentes/Header";
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Input from "./componentes/Input";
-import Button from "@mui/material/Button";
+
+import BootstrapButton from "./componentes/Button";
 
 import { get } from "./util/apiClient";
 import { post } from "./util/apiClient";
@@ -143,9 +144,11 @@ const App = () => {
               </div>
             </Box>
             <div className="Centrar-box">
-              <Button onClick={handleAddMovie} variant="contained">
-                Agregar película
-              </Button>
+              <BootstrapButton
+                TextIdit="Agregar película"
+                onClick={handleAddMovie}
+                variant="contained"
+              ></BootstrapButton>
             </div>
           </div>
         </div>
