@@ -4,24 +4,59 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import Link from "@mui/material/Link";
+import Badge from "@mui/material/Badge";
+import BookIcon from "@mui/icons-material/Book";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export default function DenseAppBar() {
+export default function ButtonAppBar(props) {
+  const Book = {
+    color: "#394C73",
+  };
+
+  const Header = {
+    backgroundColor: "#F5F5F5",
+    height: "100%",
+    border: "1px solid #E0E0E0",
+    boxShadow: "none",
+  };
+  const font = {
+    fontFamily: ["Open Sans", "sans-serif"].join(","),
+    fontSize: "20px",
+    color: "black",
+    cursor: "pointer",
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+      <AppBar style={Header} position="static">
+        <Toolbar style={Header}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Link sx={{ textDecoration: "none" }} style={font}>
+              Peliculas
+            </Link>
+          </Box>
+          <Typography
+            variant="h4"
+            style={font}
+            component="div"
+            sx={{ flexGrow: 1 }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Movies good
+            {props.TitlePage}
           </Typography>
+          <IconButton
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+          >
+            <Badge color="error">
+              {" "}
+              <BookIcon style={Book} />
+            </Badge>
+          </IconButton>
+          <IconButton size="large" aria-label="show 17 new notifications">
+            <AccountCircleIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>
