@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import Input from "./componentes/Input";
 
 import BootstrapButton from "./componentes/Button";
+import ButtunCeleste from "./componentes/ButtunCelesta";
+import ButtunRed from "./componentes/ButtunRed";
 
 import { get } from "./util/apiClient";
 import { post } from "./util/apiClient";
@@ -70,8 +72,8 @@ const App = () => {
             infoMovies.map((movie) => (
               <Card
                 sx={{
-                  margin: "1px",
-                  padding: "1px",
+                  margin: "4px",
+                  padding: "4px",
                   display: "-ms-inline-flexbox",
                   width: "50%",
                   height: "150px",
@@ -88,6 +90,21 @@ const App = () => {
                   </Typography>
                   <Typography variant="body2">{movie.director}</Typography>
                   <Typography variant="body2">{movie.clasificacion}</Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <ButtunCeleste
+                      TextIdit="Update"
+                      variant="contained"
+                    ></ButtunCeleste>
+                    <ButtunRed
+                      TextIdit="Delete"
+                      variant="contained"
+                    ></ButtunRed>
+                  </div>
                 </CardContent>
               </Card>
             ))}
