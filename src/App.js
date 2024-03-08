@@ -10,6 +10,7 @@ import ButtunRed from "./componentes/ButtunRed";
 
 import { get } from "./util/apiClient";
 import { post } from "./util/apiClient";
+import { remove } from "./util/apiClient";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -51,6 +52,16 @@ const App = () => {
         console.error("Error fetching movies", error);
       });
   }
+
+  function handleDeleteMovie(id) {
+    if (window.confirm("¿Estás seguro de eliminar esta película?")) {
+      remove(id).then((response) => {
+        const filteredMovies = infoMovies.filter((movie) => movie.id !== id);
+        setMovies(filteredMovies);
+      });
+    }
+  }
+
   if (isLoading) {
     return <div>Loading movies...</div>;
   }
@@ -103,6 +114,7 @@ const App = () => {
                     <ButtunRed
                       TextIdit="Delete"
                       variant="contained"
+                      onClick={() => handleDeleteMovie(movie.id)}
                     ></ButtunRed>
                   </div>
                 </CardContent>
