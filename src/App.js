@@ -3,6 +3,7 @@ import Header from "./componentes/Header";
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Input from "./componentes/Input";
+import TransitionsModal from "./componentes/ModalUpdate";
 
 import BootstrapButton from "./componentes/Button";
 import ButtunCeleste from "./componentes/ButtunCelesta";
@@ -24,6 +25,11 @@ const App = () => {
     director: "",
     clasificacion: "",
   });
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setModalOpen(true); // Open the modal on button click
+  };
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -110,7 +116,11 @@ const App = () => {
                     <ButtunCeleste
                       TextIdit="Update"
                       variant="contained"
+                      onClick={handleButtonClick}
                     ></ButtunCeleste>
+                    {modalOpen && (
+                      <TransitionsModal onClose={() => setModalOpen(false)} />
+                    )}
                     <ButtunRed
                       TextIdit="Delete"
                       variant="contained"
